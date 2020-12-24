@@ -11,6 +11,8 @@ public:
     {    }
     void push_back(const T& data);
     void del(const T& data);
+    int get_size();
+    T& operator[](const int& ind);
 private:
     unique_ptr<T[]> _list;
     int _size;
@@ -46,4 +48,16 @@ inline void list<T>::del(const T& data)
     }
     _list = deldata;
     --_size;
+}
+
+template<class T>
+inline int list<T>::get_size()
+{
+    return _size;
+}
+
+template<class T>
+inline T& list<T>::operator[](const int& ind)
+{
+    return _list[ind];
 }
